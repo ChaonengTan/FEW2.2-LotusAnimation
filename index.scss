@@ -1,9 +1,4 @@
-$petalColor1: red;
-$petalColor2: orange;
-$petalColor3: yellow;
-$petalColor4: green;
-$petalColor5: blue;
-
+$petalColors: red, orange, yellow, green, blue;
 $transitionSpeed: 200ms;
 $size: 300px;
 $degrees: 45deg;
@@ -18,9 +13,7 @@ $positionY: 100px;
     height: $size;
     // border: 1px solid;
     position: relative;
-}
-.lotus {
-    div {
+    &>div {
         position: absolute;
         width: $size/3 *2;
         height: $size/3 *2;
@@ -33,17 +26,13 @@ $positionY: 100px;
         transform-origin: $size/2 $size/2;
         transition: $transitionSpeed;
     }
-
-    div:nth-child(1) {background-color: $petalColor1;}
-    div:nth-child(2) {background-color: $petalColor2;}
-    div:nth-child(3) {background-color: $petalColor3;}
-    div:nth-child(4) {background-color: $petalColor4;}
-    div:nth-child(5) {background-color: $petalColor5;}
+    
+    @for $i from 1 through 5 {
+        div:nth-child(#{$i}) {background-color: nth($petalColors, $i);}
+    }
 }
 .lotus:hover {
-    div:nth-child(1) {transform: rotate(-$degrees);}
-    div:nth-child(2) {transform: rotate(0deg);}
-    div:nth-child(3) {transform: rotate($degrees);}
-    div:nth-child(4) {transform: rotate($degrees*2);}
-    div:nth-child(5) {transform: rotate($degrees*3);}
+    @for $i from 1 through 5 {
+        div:nth-child(#{$i}) {transform: rotate(-$degrees*2+$degrees*$i);}
+    }
 }

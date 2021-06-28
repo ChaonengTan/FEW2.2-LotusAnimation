@@ -3,8 +3,7 @@
   height: 300px;
   position: relative;
 }
-
-.lotus div {
+.lotus > div {
   position: absolute;
   width: 200px;
   height: 200px;
